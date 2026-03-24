@@ -1,5 +1,5 @@
 import 'package:ecommerce/feature/screen/favorate/favorate.dart';
-import 'package:ecommerce/feature/screen/home_page.dart';
+import 'package:ecommerce/feature/screen/home_page/home_page.dart';
 import 'package:ecommerce/feature/screen/order/order.dart';
 import 'package:ecommerce/feature/screen/prefile/prefile.dart';
 import 'package:flutter/cupertino.dart';
