@@ -62,7 +62,7 @@ class DetailProduct extends StatelessWidget {
                   height: double.infinity,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0,
+                      horizontal: 30.0,
                       vertical: 10,
                     ),
                     child: Column(
@@ -78,6 +78,8 @@ class DetailProduct extends StatelessWidget {
                                   .copyWith(fontWeight: FontWeight.bold),
                             ),
                             BlocBuilder<DetailCubitCubit, DetailCubitState>(
+                              buildWhen: (previous, current) =>
+                                  current is DetailCubitcounterqualiter,
                               builder: (context, state) {
                                 if (state is DetailCubitcounterqualiter) {
                                   return Counter(
@@ -126,6 +128,148 @@ class DetailProduct extends StatelessWidget {
                                       ),
                                 ),
                               ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          'Size',
+                          style: Theme.of(context).textTheme.titleMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        BlocBuilder<DetailCubitCubit, DetailCubitState>(
+                          builder: (context, state) {
+                            return Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
+                              children: ProductSize.values
+                                  .map(
+                                    (size) => Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: InkWell(
+                                        onTap: () {
+                                          context
+                                              .read<DetailCubitCubit>()
+                                              .changesize(size);
+                                        },
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                            color:
+                                                state is DetailCubitchangesize &&
+                                                    state.size == size
+                                                ? Colors.blue
+                                                : Colors.grey,
+                                            shape: BoxShape.circle,
+                                          ),
+
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              size.name,
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color:
+                                                    state is DetailCubitchangesize &&
+                                                        state.size == size
+                                                    ? Colors.black
+                                                    : Colors.red,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                            );
+                          },
+                        ),
+                        Text(
+                          'Description',
+                          style: Theme.of(context).textTheme.titleMedium!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          list.description,
+                          style: Theme.of(context).textTheme.titleMedium!
+                              .copyWith(color: Colors.black45),
+                        ),
+                        Expanded(child: SizedBox()),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Text.rich(
+                                  TextSpan(
+                                    text: '\$',
+                                    style: TextStyle(
+                                      color: Colors.deepPurpleAccent,
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+
+                                    children: [
+                                      TextSpan(
+                                        text: '${list.price}',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 23,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            BlocBuilder<DetailCubitCubit, DetailCubitState>(
+                              builder: (context, state) {
+                                if (state is Addtocardloading) {
+                                  return ElevatedButton(
+                                    onPressed: null,
+                                    child: CircularProgressIndicator(),
+                                  );
+                                } else if (state is Addtocardsucces) {
+                                  return ElevatedButton(
+                                    onPressed: null,
+                                    child: Text('additing to cart'),
+                                  );
+                                }
+                                return Row(
+                                  children: [
+                                    DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromARGB(
+                                          255,
+                                          9,
+                                          61,
+                                          151,
+                                        ),
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: TextButton.icon(
+                                        onPressed: () {
+                                          context
+                                              .read<DetailCubitCubit>()
+                                              .addtocart(list.id);
+                                        },
+                                        label: Text(
+                                          'Add To Cart',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(color: Colors.white),
+                                        ),
+                                        icon: Icon(
+                                          Icons.card_travel,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                           ],
                         ),

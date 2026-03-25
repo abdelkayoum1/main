@@ -1,4 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
+enum ProductSize { S, M, L, xL }
+
 class HomePageModel {
   final String id;
   final String name;
@@ -8,6 +11,7 @@ class HomePageModel {
   final bool isFavorite;
   final String category;
   final int quality;
+  final ProductSize? size;
 
   HomePageModel({
     this.quality = 0,
@@ -18,6 +22,7 @@ class HomePageModel {
     required this.price,
     this.isFavorite = false,
     required this.category,
+    this.size,
   });
 
   HomePageModel copyWith({
@@ -29,6 +34,7 @@ class HomePageModel {
     bool? isFavorite,
     String? category,
     int? quality,
+    ProductSize? size,
   }) {
     return HomePageModel(
       id: id ?? this.id,
@@ -39,6 +45,7 @@ class HomePageModel {
       isFavorite: isFavorite ?? this.isFavorite,
       category: category ?? this.category,
       quality: quality ?? this.quality,
+      size: size ?? this.size,
     );
   }
 }
