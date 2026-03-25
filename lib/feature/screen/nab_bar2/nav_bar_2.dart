@@ -1,9 +1,11 @@
 import 'package:ecommerce/feature/screen/favorate/favorate.dart';
 import 'package:ecommerce/feature/screen/home_page/home_page.dart';
-import 'package:ecommerce/feature/screen/order/order.dart';
+import 'package:ecommerce/feature/screen/order/feature/screen/cart_cubit/cart_cubit_cubit.dart';
+import 'package:ecommerce/feature/screen/order/feature/screen/order.dart';
 import 'package:ecommerce/feature/screen/prefile/prefile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class NavBar2 extends StatefulWidget {
@@ -34,7 +36,14 @@ class _NavBar2State extends State<NavBar2> {
           item: ItemConfig(icon: Icon(CupertinoIcons.home), title: "Home"),
         ),
         PersistentTabConfig(
-          screen: Order(),
+          screen: BlocProvider(
+            create: (context) {
+              final cubit = CartCubitCubit();
+              cubit.getcartitem();
+              return cubit;
+            },
+            child: Order(),
+          ),
           item: ItemConfig(icon: Icon(CupertinoIcons.cart), title: "Order"),
         ),
         PersistentTabConfig(

@@ -26,7 +26,12 @@ class DetailCubitCubit extends Cubit<DetailCubitState> {
 
   void addtocart(String id) async {
     emit(Addtocardloading());
-    final cartitem = Addtocart(id: id, size: sizee!, quality: quality);
+    final cartitem = Addtocart(
+      id: DateTime.now().toString(),
+      size: sizee!,
+      quality: quality,
+      product: list.firstWhere((item) => item.id == id),
+    );
 
     cart.add(cartitem);
     await Future.delayed(Duration(seconds: 1), () {

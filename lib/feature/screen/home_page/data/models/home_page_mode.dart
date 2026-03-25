@@ -29,8 +29,6 @@ class HomePageModel {
     double? price,
     bool? isFavorite,
     String? category,
-    int? quality,
-    ProductSize? size,
   }) {
     return HomePageModel(
       id: id ?? this.id,
