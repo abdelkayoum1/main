@@ -11,9 +11,10 @@ class Order extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: BlocBuilder<CartCubitCubit, CartCubitState>(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(),
+        body: BlocBuilder<CartCubitCubit, CartCubitState>(
           builder: (context, state) {
             if (state is CartCubitfailure) {
               return Center(child: Text(state.error));
@@ -21,17 +22,24 @@ class Order extends StatelessWidget {
               if (state.addtocart.isEmpty) {
                 return Center(child: Text('no item dans cart'));
               }
-              return Column(
-                children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: state.addtocart.length,
-                    itemBuilder: (context, index) {
-                      return CartItem(cart: state.addtocart[index]);
-                    },
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Column(
+                    children: [
+                      ListView.separated(
+                        separatorBuilder: (context, index) =>
+                            Divider(thickness: 2, color: Colors.black),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: state.addtocart.length,
+                        itemBuilder: (context, index) {
+                          return CartItem(cart: state.addtocart[index]);
+                        },
+                      ),
+                    ],
                   ),
-                ],
+                ),
               );
             } else {
               return Center(child: CircularProgressIndicator());

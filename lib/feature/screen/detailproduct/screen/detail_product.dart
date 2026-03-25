@@ -138,6 +138,8 @@ class DetailProduct extends StatelessWidget {
                               .copyWith(fontWeight: FontWeight.bold),
                         ),
                         BlocBuilder<DetailCubitCubit, DetailCubitState>(
+                          buildWhen: (previous, current) =>
+                              current is DetailCubitchangesize,
                           builder: (context, state) {
                             return Row(
                               //   mainAxisAlignment: MainAxisAlignment.center,

@@ -16,4 +16,22 @@ class CartCubitCubit extends Cubit<CartCubitState> {
       emit(CartCubitfailure(error: e.toString()));
     }
   }
+
+  int quality = 0;
+  void increment(String qualityid) {
+    quality++;
+    print("object");
+    emit(CartCubitqualiter(qualite: quality));
+    print('2');
+  }
+
+  void remove(String index) {
+    cart.removeWhere((item) => item.id == index);
+    emit(CartCubitsucces(addtocart: cart));
+  }
+
+  void deirement(String qualityid) {
+    quality--;
+    emit(CartCubitqualiter(qualite: quality));
+  }
 }

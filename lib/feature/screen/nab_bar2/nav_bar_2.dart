@@ -28,6 +28,7 @@ class _NavBar2State extends State<NavBar2> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      stateManagement: false,
       controller: _controller,
 
       tabs: [
