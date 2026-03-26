@@ -14,7 +14,7 @@ class Addtocart {
     required this.product,
   });
   /*
-  Addtocart copyWith({String? id, ProductSize? size, int? quality}) {
+  Addtocart copyWith({Strin g? id, ProductSize? size, int? quality}) {
     return Addtocart(
       product: product?,
       id: id ?? this.id,

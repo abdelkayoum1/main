@@ -1,6 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce/feature/screen/home_page/data/models/addtocart.dart';
-import 'package:ecommerce/feature/screen/home_page/data/models/home_page_mode.dart';
 import 'package:ecommerce/feature/screen/order/feature/screen/cart_cubit/cart_cubit_cubit.dart';
 import 'package:ecommerce/feature/screen/order/feature/screen/widget/cart_item.dart';
 import 'package:flutter/material.dart';
@@ -12,40 +9,40 @@ class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(),
-        body: BlocBuilder<CartCubitCubit, CartCubitState>(
-          builder: (context, state) {
-            if (state is CartCubitfailure) {
-              return Center(child: Text(state.error));
-            } else if (state is CartCubitsucces) {
-              if (state.addtocart.isEmpty) {
-                return Center(child: Text('no item dans cart'));
-              }
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Column(
-                    children: [
-                      ListView.separated(
-                        separatorBuilder: (context, index) =>
-                            Divider(thickness: 2, color: Colors.black),
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: state.addtocart.length,
-                        itemBuilder: (context, index) {
-                          return CartItem(cart: state.addtocart[index]);
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            } else {
-              return Center(child: CircularProgressIndicator());
+      child: BlocBuilder<CartCubitCubit, CartCubitState>(
+        bloc: context.read<CartCubitCubit>(),
+        buildWhen: (previous, current) =>
+            current is DetailCubitcounterqualiter || current is CartCubitsucces,
+        builder: (context, state) {
+          if (state is CartCubitfailure) {
+            return Center(child: Text(state.error));
+          } else if (state is CartCubitsucces) {
+            if (state.addtocart.isEmpty) {
+              return Center(child: Text('no item dans cart'));
             }
-          },
-        ),
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Column(
+                  children: [
+                    ListView.separated(
+                      separatorBuilder: (context, index) =>
+                          Divider(thickness: 2, color: Colors.black),
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: state.addtocart.length,
+                      itemBuilder: (context, index) {
+                        return CartItem(cart: state.addtocart[index]);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
       ),
     );
   }

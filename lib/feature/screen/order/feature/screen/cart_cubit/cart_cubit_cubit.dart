@@ -17,21 +17,20 @@ class CartCubitCubit extends Cubit<CartCubitState> {
     }
   }
 
-  int quality = 0;
-  void increment(String qualityid) {
-    quality++;
-    print("object");
-    emit(CartCubitqualiter(qualite: quality));
-    print('2');
-  }
-
   void remove(String index) {
     cart.removeWhere((item) => item.id == index);
     emit(CartCubitsucces(addtocart: cart));
   }
 
+  int quality = 0;
+  void increment(String qualityid) {
+    quality++;
+    print("object");
+    emit(DetailCubitcounterqualiter(value: quality));
+  }
+
   void deirement(String qualityid) {
     quality--;
-    emit(CartCubitqualiter(qualite: quality));
+    emit(DetailCubitcounterqualiter(value: quality));
   }
 }

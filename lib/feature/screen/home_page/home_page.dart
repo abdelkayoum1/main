@@ -31,8 +31,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
           children: [
-            Homepageappbar(),
-            SizedBox(height: 20),
+            // Homepageappbar(),
             TabBar(
               unselectedLabelColor: Colors.grey,
               controller: controller,

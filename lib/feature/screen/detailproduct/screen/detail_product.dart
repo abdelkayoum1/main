@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:ecommerce/feature/screen/detailproduct/manager/cubit/detail_cubit_cubit.dart';
 import 'package:ecommerce/feature/screen/detailproduct/screen/widget/counter.dart';
+import 'package:ecommerce/feature/screen/home_page/data/models/addtocart.dart';
 import 'package:ecommerce/feature/screen/home_page/data/models/home_page_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -88,7 +89,11 @@ class DetailProduct extends StatelessWidget {
                                     value: state.quality,
                                   );
                                 } else {
-                                  return SizedBox.shrink();
+                                  return Counter(
+                                    value: 0,
+                                    quality: list.id,
+                                    cubit: context.read<DetailCubitCubit>(),
+                                  );
                                 }
                               },
                             ),

@@ -13,10 +13,10 @@ final class CartCubitsucces extends CartCubitState {
   CartCubitsucces({required this.addtocart});
 }
 
-final class CartCubitqualiter extends CartCubitState {
-  final int qualite;
+final class DetailCubitcounterqualiter extends CartCubitState {
+  final int value;
 
-  CartCubitqualiter({required this.qualite});
+  DetailCubitcounterqualiter({required this.value});
 }
 
 final class CartCubitfailure extends CartCubitState {

@@ -5,18 +5,21 @@ import 'package:ecommerce/feature/screen/home_page/data/models/home_page_mode.da
 part 'detail_cubit_state.dart';
 
 class DetailCubitCubit extends Cubit<DetailCubitState> {
-  DetailCubitCubit() : super(DetailCubitcounterqualiter(quality: 0));
+  DetailCubitCubit() : super(DetailCubitInitial());
   ProductSize? sizee;
   int quality = 0;
-  void increment(String qualityid) {
+  void increment(String qualityid, [int? id]) {
     quality++;
     print("object");
-    emit(DetailCubitcounterqualiter(quality: quality));
+    emit(DetailCubitcounterqualiter(quality: quality, id: qualityid));
   }
 
-  void deirement(String qualityid) {
+  void deirement(String qualityid, [int? id]) {
+    if (id != null) {
+      quality = id;
+    }
     quality--;
-    emit(DetailCubitcounterqualiter(quality: quality));
+    emit(DetailCubitcounterqualiter(quality: quality, id: qualityid));
   }
 
   void changesize(ProductSize size) {

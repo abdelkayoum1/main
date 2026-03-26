@@ -6,8 +6,9 @@ final class DetailCubitInitial extends DetailCubitState {}
 
 final class DetailCubitcounterqualiter extends DetailCubitState {
   final int quality;
+  final String id;
 
-  DetailCubitcounterqualiter({required this.quality});
+  DetailCubitcounterqualiter({required this.quality, required this.id});
 }
 
 final class DetailCubitchangesize extends DetailCubitState {
