@@ -7,7 +7,7 @@ class Counter extends StatelessWidget {
   final int value;
   final String quality;
   final dynamic cubit;
-  final int? id;
+  final String? id;
   const Counter({
     super.key,
     required this.value,
@@ -28,10 +28,10 @@ class Counter extends StatelessWidget {
           IconButton(
             onPressed: () {
               if (value > 0) {
-                if (id == id) {
-                  context.read<DetailCubitCubit>().deirement(quality, id);
+                if (id != null) {
+                  cubit.deirement(quality, id);
                 } else {
-                  context.read<DetailCubitCubit>().deirement(quality);
+                  cubit.deirement(quality);
                 }
               } else {}
             },
@@ -54,9 +54,11 @@ class Counter extends StatelessWidget {
 
           IconButton(
             onPressed: () {
-              id != null
-                  ? context.read<DetailCubitCubit>().increment(quality)
-                  : context.read<DetailCubitCubit>().increment(quality, id);
+              if (id != null) {
+                cubit.increment(quality, id);
+              } else {
+                cubit.increment(quality);
+              }
             },
             icon: DecoratedBox(
               decoration: BoxDecoration(

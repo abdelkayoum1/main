@@ -12,6 +12,8 @@ class DetailCubitCubit extends Cubit<DetailCubitState> {
     quality++;
     print("object");
     emit(DetailCubitcounterqualiter(quality: quality, id: qualityid));
+
+    print('sucessssssssssssssssssssss');
   }
 
   void deirement(String qualityid, [int? id]) {
