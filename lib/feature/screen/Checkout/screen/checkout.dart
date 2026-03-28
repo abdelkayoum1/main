@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/feature/screen/Checkout/cubit/chackout_cubit_cubit.dart';
+import 'package:ecommerce/feature/screen/Checkout/screen/widjet/shopping.dart';
 import 'package:ecommerce/feature/screen/home_page/data/models/addtocart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,12 +41,15 @@ class Checkout extends StatelessWidget {
                       ],
                     ),
 
+                    Shopping(title: 'Add shipping Adress'),
+                    SizedBox(height: 10),
                     Text(
                       'Product (${state.numproduct}):',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    SizedBox(height: 10),
                     ListView.separated(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -116,19 +120,43 @@ class Checkout extends StatelessWidget {
                       },
                       itemCount: cart.length,
                     ),
-
+                    SizedBox(height: 10),
                     Text(
                       'Payment Methode',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    SizedBox(height: 10),
+                    Shopping(title: 'Add Methode payment'),
+                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('Total Amount'),
                         Text('\$${state.totalamount}'),
                       ],
+                    ),
+                    Expanded(child: SizedBox()),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'payé',
+                          style: Theme.of(context).textTheme.titleMedium!
+                              .copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                        ),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.deepPurpleAccent,
+                          foregroundColor: Colors.white,
+                        ),
+                      ),
                     ),
                   ],
                 );
