@@ -1,4 +1,4 @@
-import 'package:ecommerce/feature/screen/locationn/data/locationcubit/location_cubit_cubit.dart';
+import 'package:ecommerce/feature/screen/locationn/data/cubit/location_cubit_cubit.dart';
 import 'package:ecommerce/feature/screen/locationn/model/location_model.dart';
 import 'package:ecommerce/feature/screen/locationn/screnn/widget/textfieledd.dart';
 import 'package:flutter/material.dart';
