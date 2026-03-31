@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce/core/approuter.dart';
 import 'package:ecommerce/feature/screen/Checkout/cubit/chackout_cubit_cubit.dart';
 import 'package:ecommerce/feature/screen/Checkout/screen/checkout/models/pyment_model.dart';
 import 'package:ecommerce/feature/screen/Checkout/screen/checkout/widjet/list_tile.dart';
@@ -6,17 +7,23 @@ import 'package:ecommerce/feature/screen/Checkout/screen/checkout/widjet/shoppin
 import 'package:ecommerce/feature/screen/home_page/data/models/addtocart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class Checkout extends StatelessWidget {
   final List<Addtocart> cart;
 
   const Checkout({super.key, required this.cart});
 
-  Widget chhosepymentcard(PymentModel? pyment) {
+  Widget chhosepymentcard(BuildContext context, PymentModel? pyment) {
     if (pyment != null) {
       return ListTilee(pyment: pyment);
     } else {
-      return Shopping(title: 'Add Methode payment');
+      return Shopping(
+        title: 'Add Methode payment',
+        ontap: () {
+          GoRouter.of(context).push(Approuter.addcard);
+        },
+      );
     }
   }
 
@@ -56,7 +63,12 @@ class Checkout extends StatelessWidget {
                       ],
                     ),
 
-                    Shopping(title: 'Add shipping Adress'),
+                    Shopping(
+                      title: 'Add shipping Adress',
+                      ontap: () {
+                        GoRouter.of(context).push(Approuter.location);
+                      },
+                    ),
                     SizedBox(height: 10),
                     Text(
                       'Product (${state.numproduct}):',
@@ -145,7 +157,7 @@ class Checkout extends StatelessWidget {
 
                     SizedBox(height: 10),
 
-                    chhosepymentcard(state.choosepyment),
+                    chhosepymentcard(context, state.choosepyment),
                     SizedBox(height: 10),
 
                     Row(

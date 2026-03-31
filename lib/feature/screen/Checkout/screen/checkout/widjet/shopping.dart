@@ -6,17 +6,16 @@ import 'package:go_router/go_router.dart';
 
 class Shopping extends StatelessWidget {
   final String title;
-  const Shopping({super.key, required this.title});
+  final VoidCallback ontap;
+  const Shopping({super.key, required this.title, required this.ontap});
 
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<ChackoutCubitCubit>(context);
     return InkWell(
-      onTap: () {
-        GoRouter.of(
-          context,
-        ).push(Approuter.addcard).then((value) => cubit.getproduct());
-      },
+      onTap: ontap,
+
+      //  GoRouter.of( context,).push(Approuter.addcard).then((value) => cubit.getproduct());
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
