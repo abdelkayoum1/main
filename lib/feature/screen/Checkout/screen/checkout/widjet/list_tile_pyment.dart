@@ -69,7 +69,7 @@ class _ListTilePymentState extends State<ListTilePyment> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(pymentmodel[index].cvv),
+                              Text(pymentmodel[index].namecard),
                               Checkbox(
                                 value:
                                     widget.ischecked == pymentmodel[index].id,

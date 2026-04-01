@@ -4,6 +4,7 @@ import 'package:ecommerce/feature/screen/detailproduct/manager/cubit/detail_cubi
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
   runApp(const MyApp());

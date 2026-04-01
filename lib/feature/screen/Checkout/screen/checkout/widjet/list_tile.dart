@@ -185,7 +185,7 @@ class _ListTileeState extends State<ListTilee> {
             title: Text(
               selectedPayment?.cardholdername ?? widget.pyment.cardholdername,
             ),
-            subtitle: Text(selectedPayment?.cvv ?? widget.pyment.cvv),
+            subtitle: Text(selectedPayment?.namecard ?? widget.pyment.namecard),
             trailing: Icon(Icons.arrow_back),
           ),
         ),

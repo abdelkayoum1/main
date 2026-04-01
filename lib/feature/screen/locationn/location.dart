@@ -45,10 +45,16 @@ class _LocationState extends State<Location> {
                   title: 'Youre Location',
                   sufixe: Icon(Icons.add),
                   prefixIcon:
-                      BlocBuilder<LocationCubitCubit, LocationCubitState>(
+                      BlocConsumer<LocationCubitCubit, LocationCubitState>(
+                        listener: (context, state) {
+                          if (state is AddLocationCubitsucces) {
+                            location.clear();
+                          }
+                        },
                         buildWhen: (previous, current) =>
                             current is AddLocationCubitsucces ||
                             current is AddLocationCubitloading,
+                        // current is FetchLocationCubitsucces,
                         builder: (context, state) {
                           if (state is AddLocationCubitloading) {
                             return IconButton(

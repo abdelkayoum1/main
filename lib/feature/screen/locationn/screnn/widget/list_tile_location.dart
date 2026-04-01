@@ -29,25 +29,66 @@ class _ListTileLocationState extends State<ListTileLocation> {
           context.read<ChackoutCubitCubit>().getproduct();
         }
       },
-      child: ListTile(
-        title: Text(locationn?.city ?? widget.location.city),
-        subtitle: Text(
-          locationn?.country ?? widget.location.country,
-          style: Theme.of(
-            context,
-          ).textTheme.titleSmall!.copyWith(color: Colors.grey),
-        ),
-        trailing: ClipOval(
-          child: Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-              color: Colors.black,
+      child: Card(
+        color: Colors.white,
 
-              image: DecorationImage(image: AssetImage('assets/location.png')),
-            ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset('assets/Background (2).png', width: 100, height: 100),
+              SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(locationn?.city ?? widget.location.city),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(locationn?.country ?? widget.location.country),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
+
+        /*
+               ListTile(
+                onTap: () {
+                  setState(() {
+                    // if (ischecked == null) {
+                    ischecked = pymentmodel[index].id;
+                    print(pymentmodel[index].id);
+            
+                    //Navigator.pop(context, pymentmodel[index]);
+            
+                    // print(pymentmodel[index].cvv);
+                    //  } else {
+                    //    ischecked = null;
+                    //  }
+                  });
+                },
+                leading: Image.asset(
+                  'assets/Background (2).png',
+                  width: 50,
+                  height: 50,
+                ),
+                title: Text(pymentmodel[index].cardholdername),
+                subtitle: Text(pymentmodel[index].namecard),
+            
+                trailing: Checkbox(
+                  value: ischecked == pymentmodel[index].id,
+            
+                  onChanged: (value) {},
+                ),
+              ),
+              */
       ),
     );
   }
