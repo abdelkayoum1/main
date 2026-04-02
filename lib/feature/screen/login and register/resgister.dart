@@ -63,7 +63,7 @@ class _LoginnState extends State<Register> {
                 Textfieled1(
                   title: username,
                   text: 'Entrer your Username',
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: Icon(Icons.person),
                 ),
                 SizedBox(height: 20),
                 Text(
@@ -77,7 +77,7 @@ class _LoginnState extends State<Register> {
                 Textfieled1(
                   title: email,
                   text: 'Entrer your email',
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: Icon(Icons.check),
                 ),
                 SizedBox(height: 10),
                 Text(
@@ -103,7 +103,7 @@ class _LoginnState extends State<Register> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (key.currentState!.validate()) {
-                        //   GoRouter.of(context).push(Approuter.login);
+                        GoRouter.of(context).push(Approuter.login);
                       }
                     },
                     child: Text("Register"),

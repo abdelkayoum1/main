@@ -1,9 +1,11 @@
-import 'package:ecommerce/feature/screen/Checkout/screen/checkout/widjet/textfieled.dart';
-import 'package:ecommerce/feature/screen/locationn/screnn/widget/textfieledd.dart';
+import 'package:ecommerce/core/approuter.dart';
+
 import 'package:ecommerce/feature/screen/login%20and%20register/widget/container.dart';
 import 'package:ecommerce/feature/screen/login%20and%20register/widget/textfieled.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Loginn extends StatefulWidget {
   const Loginn({super.key});
@@ -59,7 +61,7 @@ class _LoginnState extends State<Loginn> {
                 Textfieled1(
                   title: email,
                   text: 'Entrer your email',
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: Icon(Icons.check),
                 ),
                 SizedBox(height: 10),
                 Text(
@@ -90,9 +92,7 @@ class _LoginnState extends State<Loginn> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (key.currentState!.validate()) {
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(SnackBar(content: Text('succes')));
+                        GoRouter.of(context).push(Approuter.navbar2);
                       }
                     },
                     child: Text("Login"),
