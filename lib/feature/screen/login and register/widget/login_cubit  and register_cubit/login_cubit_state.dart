@@ -34,3 +34,13 @@ final class Logoutfailure extends LoginCubitState {
 
   Logoutfailure({required this.error});
 }
+
+final class Signgoogleloading extends LoginCubitState {}
+
+final class Signgooglesucces extends LoginCubitState {}
+
+final class Signgooglefailure extends LoginCubitState {
+  final String error;
+
+  Signgooglefailure({required this.error});
+}

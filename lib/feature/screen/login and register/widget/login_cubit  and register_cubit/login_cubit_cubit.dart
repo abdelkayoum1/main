@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_either/dart_either.dart';
 import 'package:ecommerce/core/firestore_servvice.dart';
 import 'package:ecommerce/feature/screen/login%20and%20register/data/repo/login_repo_imp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -69,6 +70,21 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
       emit(Logoutsucces());
     } catch (e) {
       emit(Logoutfailure(error: e.toString()));
+    }
+  }
+
+  Future<void> signgoogle() async {
+    emit(Signgoogleloading());
+    try {
+      final resultat = await loginrepo.signInWithGoogle();
+
+      if (resultat) {
+        emit(Signgooglesucces());
+      } else {
+        emit(Signgooglefailure(error: 'error'));
+      }
+    } catch (e) {
+      emit(Signgooglefailure(error: e.toString()));
     }
   }
 }

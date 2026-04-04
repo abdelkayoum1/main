@@ -15,7 +15,7 @@ class Prefile extends StatelessWidget {
         child: BlocConsumer<LoginCubitCubit, LoginCubitState>(
           listener: (context, state) {
             if (state is Logoutsucces) {
-              GoRouter.of(context).push(Approuter.login);
+              GoRouter.of(context).pushReplacement(Approuter.login);
             } else if (state is Logoutfailure) {
               ScaffoldMessenger.of(
                 context,

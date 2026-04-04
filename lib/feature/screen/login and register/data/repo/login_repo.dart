@@ -1,3 +1,4 @@
+import 'package:dart_either/dart_either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class LoginRepo {
@@ -7,5 +8,5 @@ abstract class LoginRepo {
 
   Future<void> logout();
 
-  Future<void> loginwithgoogle();
+  Future<bool> signInWithGoogle();
 }

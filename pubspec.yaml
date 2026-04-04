@@ -47,6 +47,7 @@ dependencies:
   google_sign_in: ^7.2.0
   flutter_facebook_auth: ^7.1.6
   cloud_firestore: ^6.2.0
+  dart_either: ^2.1.0
 
 dev_dependencies:
   flutter_test:

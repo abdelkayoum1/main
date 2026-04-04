@@ -169,13 +169,43 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 20),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('assets/google.png', width: 30),
-                    SizedBox(width: 10),
-                    Text('Login in google'),
-                  ],
+                BlocConsumer<LoginCubitCubit, LoginCubitState>(
+                  listener: (context, state) {
+                    if (state is Signgooglesucces) {
+                      GoRouter.of(context).push(Approuter.navbar2);
+                    } else if (state is Signgooglefailure) {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(state.error)));
+                    }
+                  },
+
+                  builder: (context, state) {
+                    if (state is Signgoogleloading) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        children: [
+                          TextButton(
+                            onPressed: null,
+                            child: CircularProgressIndicator.adaptive(),
+                          ),
+                        ],
+                      );
+                    }
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/google.png'),
+                        TextButton(
+                          onPressed: () async {
+                            await context.read<LoginCubitCubit>().signgoogle();
+                          },
+                          child: Text('login google'),
+                        ),
+                      ],
+                    );
+                  },
                 ),
 
                 SizedBox(height: 20),
